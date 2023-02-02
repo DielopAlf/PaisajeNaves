@@ -5,10 +5,9 @@ using UnityEngine;
 public class WayPoint : MonoBehaviour
 {
 
-    public Transform siguientePunto; 
 
 
-    public Transform [] puntoruta;
+    public Transform [] puntosruta;
     
     
     [Range(0f,2f)]
@@ -18,9 +17,9 @@ public class WayPoint : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-        if (puntoruta.Length>0)
+        if(puntosruta!=null && puntosruta.Length>0)
         {
-            for(int i =0; i < puntoruta.Length; i++)
+            for(int i =0; i < puntosruta.Length; i++)
             {
                if (i==0)
                {
@@ -33,17 +32,17 @@ public class WayPoint : MonoBehaviour
                  Gizmos.color=Color.green;
                }
 
-               Gizmos.DrawWireSphere(puntoruta[i].position,Tamanopunto);
+               Gizmos.DrawWireSphere(puntosruta[i].position,Tamanopunto);
 
             }
 
-            for(int i =0; i < puntoruta.Length-1; i++)
+            for(int i =0; i < puntosruta.Length-1; i++)
             {
                Gizmos.color=Color.red;
-               Gizmos.DrawLine(puntoruta[i].position,puntoruta[i+1].position);
+               Gizmos.DrawLine(puntosruta[i].position,puntosruta[i+1].position);
                 
             }
-            Gizmos.DrawLine(puntoruta[puntoruta.Length-1].position,puntoruta[0].position);
+            Gizmos.DrawLine(puntosruta[puntosruta.Length-1].position,puntosruta[0].position);
 
         }
         

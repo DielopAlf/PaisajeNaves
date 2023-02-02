@@ -5,35 +5,55 @@ using UnityEngine;
 public class NaveEnemiga : MonoBehaviour
 {
 
-    float speed = 5.0f;
+    public float speed = 5.0f;
 
-    public Transform target;
 
     public WayPoint ruta;
 
     int puntoactual;
 
-    
+    public float margenhastapunto=0.1f;
+
+    Vector3 siguientepunto;
 
     void Start()
     {       
-        transform.position = ruta.puntoruta[0].position;
-
-        transform.LookAt(ruta.puntoruta[0]);  
+        transform.position = ruta.puntosruta[0].position;
+        puntoactual=0;
+        CalcularSiguientePunto();
+        transform.LookAt(ruta.puntosruta[0]);  
     }
 
     void Update()
     {
-        //transform.Translate(new Vector3(0, 0, speed*Time.deltaTime)); 
+        movimiento();
+       
     }
-
-     void OnTriggerEnter(Collider other)
+    public void movimiento()
     {
-        if (other.tag =="WayPoint")
+       transform.position=Vector3.MoveTowards(transform.position,siguientepunto,speed*Time.deltaTime);
+       if(Vector3.Distance(transform.position,siguientepunto)<margenhastapunto)
+       {
+            CalcularSiguientePunto();    
+       }
+    }
+    public void CalcularSiguientePunto()
+    {
+        if(puntoactual+1<=ruta.puntosruta.Length-1)
         {
-            target=other.gameObject.GetComponent<WayPoint>().siguientePunto;
-            //transform.LookAt(new Vector3(target.position.x,transform.position.y,target.position.z));
+            puntoactual ++;
+            siguientepunto = ruta.puntosruta[puntoactual].position;
+            transform.LookAt(siguientepunto);
+
         }
+        else
+        {
+            puntoactual=0;
+
+            siguientepunto = ruta.puntosruta[puntoactual].position;
+            transform.LookAt(siguientepunto);
+        }   
+
     }
 
 }
