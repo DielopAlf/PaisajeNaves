@@ -7,6 +7,9 @@ public class NaveEnemiga : MonoBehaviour
 
     public float speed = 5.0f;
 
+    int puntosruta;
+
+
 
     public WayPoint ruta;
 
