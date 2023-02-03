@@ -57,6 +57,8 @@ public class NaveEnemiga : MonoBehaviour
             transform.LookAt(siguientepunto);
         }   
 
+
+
     }
 
 }

@@ -4453,10 +4453,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 804411677, guid: 17e9ae8dc0b436448a652b208008e375, type: 3}
-      propertyPath: speed
-      value: -2
-      objectReference: {fileID: 0}
     - target: {fileID: 804411678, guid: 17e9ae8dc0b436448a652b208008e375, type: 3}
       propertyPath: m_Constraints
       value: 124
@@ -4466,30 +4462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bala
       objectReference: {fileID: 0}
-    - target: {fileID: 1215778970287096268, guid: 17e9ae8dc0b436448a652b208008e375,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8390464477312238250, guid: 17e9ae8dc0b436448a652b208008e375,
         type: 3}
       propertyPath: m_RootOrder
       value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390464477312238250, guid: 17e9ae8dc0b436448a652b208008e375,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: -0.01560191
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390464477312238250, guid: 17e9ae8dc0b436448a652b208008e375,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.01560191
-      objectReference: {fileID: 0}
-    - target: {fileID: 8390464477312238250, guid: 17e9ae8dc0b436448a652b208008e375,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: -0.01560191
       objectReference: {fileID: 0}
     - target: {fileID: 8390464477312238250, guid: 17e9ae8dc0b436448a652b208008e375,
         type: 3}
