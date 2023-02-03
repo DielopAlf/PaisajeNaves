@@ -6,14 +6,14 @@ public class NaveEnemiga : MonoBehaviour
 {
 
     public float speed = 5.0f;
-
-    int puntosruta;
+    public GameObject Enemy;
+    public int Vida;
 
 
 
     public WayPoint ruta;
 
-    int puntoactual;
+    int puntoActual;
 
     public float margenhastapunto=0.1f;
 
@@ -22,17 +22,17 @@ public class NaveEnemiga : MonoBehaviour
     void Start()
     {       
         transform.position = ruta.puntosruta[0].position;
-        puntoactual=0;
+        puntoActual=0;
         CalcularSiguientePunto();
         transform.LookAt(ruta.puntosruta[0]);  
     }
 
     void Update()
     {
-        movimiento();
+        Movimiento();
        
     }
-    public void movimiento()
+    public void Movimiento()
     {
        transform.position=Vector3.MoveTowards(transform.position,siguientepunto,speed*Time.deltaTime);
        if(Vector3.Distance(transform.position,siguientepunto)<margenhastapunto)
@@ -42,18 +42,18 @@ public class NaveEnemiga : MonoBehaviour
     }
     public void CalcularSiguientePunto()
     {
-        if(puntoactual+1<=ruta.puntosruta.Length-1)
+        if(puntoActual+1<=ruta.puntosruta.Length-1)
         {
-            puntoactual ++;
-            siguientepunto = ruta.puntosruta[puntoactual].position;
+            puntoActual ++;
+            siguientepunto = ruta.puntosruta[puntoActual].position;
             transform.LookAt(siguientepunto);
 
         }
         else
         {
-            puntoactual=0;
+            puntoActual=0;
 
-            siguientepunto = ruta.puntosruta[puntoactual].position;
+            siguientepunto = ruta.puntosruta[puntoActual].position;
             transform.LookAt(siguientepunto);
         }   
 
