@@ -31,9 +31,9 @@ public class PilotoNave : MonoBehaviour
 
             GameObject bala = Instantiate(proyectil);
             
-            bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
-            bala.transform.position = transform.position - transform.forward * 1.5f;
-           // Instantiate(bala, transform.position, Quaternion.Euler(0, 0, 90));
+            //bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
+            //bala.transform.position = transform.position - transform.forward * 1.5f;
+          //  Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
 
             // Timer = TiempoDeEspera;
         }

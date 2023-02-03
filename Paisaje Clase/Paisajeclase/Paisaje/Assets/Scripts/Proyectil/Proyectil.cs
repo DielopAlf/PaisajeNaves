@@ -14,7 +14,7 @@ public class Proyectil : MonoBehaviour
     void Update()
     {
         transform.position += new Vector3(0,speed * Time.deltaTime, 0);
-      //  transform.position += transform.up * Time.deltaTime * speed*2;
+        //transform.position += transform.up * Time.deltaTime * speed*2;
 
     }
 
