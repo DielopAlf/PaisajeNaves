@@ -9,6 +9,7 @@ public class PilotoNave : MonoBehaviour
     public GameObject proyectil;
     public float speed =-90.0f;
     public float Timer, TiempoDeEspera;
+    public GameObject lugarproyectil;
     // Start is called before the first frame update
     
 
@@ -26,18 +27,22 @@ public class PilotoNave : MonoBehaviour
         }
         transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));
 
-        if (Input.GetKeyUp(KeyCode.Space)&& Timer<=0)
+        if (Input.GetKeyDown(KeyCode.Space))//&& Timer<=0)
         {
 
-            GameObject bala = Instantiate(proyectil);
-            
+            GameObject bala = Instantiate(proyectil,lugarproyectil.transform.position,lugarproyectil.transform.rotation);
+            Debug.Log("BALAS");
             //bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
-            //bala.transform.position = transform.position - transform.forward * 1.5f;
-          //  Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
+            //bala.transform.position = transform.position - transform.forward * 1.5f; 
+            //Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
+          
+
+
+
 
             // Timer = TiempoDeEspera;
         }
         //  Timer -= Time.deltaTime;
-
+        //esto es otra forma de que se mueva la bala vale vale alla vamos  //atras
     }
-}
+} 

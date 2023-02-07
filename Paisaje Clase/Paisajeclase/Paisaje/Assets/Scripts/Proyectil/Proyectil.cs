@@ -4,28 +4,45 @@ using UnityEngine;
 
 public class Proyectil : MonoBehaviour
 {
-    public float speed;
+    Rigidbody rb;
+    public float speed = 50f;
+    public float daño=10f;
+   Vector3 puntoinicial;
+    public float alcance=100f;
     void Start()
     {
-      //  Destroy(gameObject, 10f);
+
+       rb = this.GetComponent<Rigidbody>();
+        puntoinicial=gameObject.transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position += new Vector3(0,speed * Time.deltaTime, 0);
-        //transform.position += transform.up * Time.deltaTime * speed*2;
+        
+        rb.velocity=transform.forward*speed*Time.deltaTime;
+        float Distancia = Vector3.Distance(transform.position,puntoinicial);
+        if (Distancia>alcance)
+        {
+
+            Destroy(gameObject);
+
+        }
 
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider objeto)
     {
 
-        if (collision.transform.CompareTag("Enemy"))
-
+        if (objeto.CompareTag("Enemy"))
         {
-            collision.gameObject.GetComponent<NaveEnemiga>().Vida -= 1;
+            objeto.gameObject.GetComponent<NaveEnemiga>().aplicardaño(daño);
+
+            Destroy(gameObject);
+
+
         }
     }
 }
 
+//este es una forma tiene mas otra en la o va hacia atras 

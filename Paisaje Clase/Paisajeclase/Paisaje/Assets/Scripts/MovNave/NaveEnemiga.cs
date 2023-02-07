@@ -7,9 +7,9 @@ public class NaveEnemiga : MonoBehaviour
 
     public float speed = 5.0f;
     public GameObject Enemy;
-    public int Vida;
-
-
+    public float Vida;
+    
+    
 
     public WayPoint ruta;
 
@@ -57,8 +57,20 @@ public class NaveEnemiga : MonoBehaviour
             transform.LookAt(siguientepunto);
         }   
 
+        
+    }
+    public void aplicardaño(float daño)
+    {
+        Vida = Vida-daño;
+        if(Vida<=0)
+        {
+            muerte();
 
+        }
 
     }
-
+    public void muerte()
+    {
+        Destroy(gameObject);
+    }
 }
