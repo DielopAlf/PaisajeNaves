@@ -1,15 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class NaveEnemiga : MonoBehaviour
 {
 
+
+
     public float speed = 5.0f;
     public GameObject Enemy;
     public float Vida;
-    
-    
+    public GameObject textpuntos;
+    public int puntos;
+    //public AudioSource collectSound;
+
 
     public WayPoint ruta;
 
@@ -71,6 +77,8 @@ public class NaveEnemiga : MonoBehaviour
     }
     public void muerte()
     {
+        //collectSound.Play();
+       PuntosNaves.puntos+=1;
         Destroy(gameObject);
     }
 }

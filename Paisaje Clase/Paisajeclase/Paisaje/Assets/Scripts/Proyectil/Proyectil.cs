@@ -45,4 +45,3 @@ public class Proyectil : MonoBehaviour
     }
 }
 
-//este es una forma tiene mas otra en la o va hacia atras 

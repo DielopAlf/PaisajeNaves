@@ -43,6 +43,5 @@ public class PilotoNave : MonoBehaviour
             // Timer = TiempoDeEspera;
         }
         //  Timer -= Time.deltaTime;
-        //esto es otra forma de que se mueva la bala vale vale alla vamos  //atras
     }
 } 

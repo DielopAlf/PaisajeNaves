@@ -6,6 +6,8 @@ TagManager:
   tags:
   - WayPoint
   - Enemy
+  - player
+  - bala
   layers:
   - Default
   - TransparentFX
