@@ -65,16 +65,19 @@ public class PilotoNave : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Lata")&& combustibleinicial>0f)
+        if (other.CompareTag("Lata")&& combustible>0f)
         {
-            combustibleinicial += 10f;
-            if (combustibleinicial > 100f)
+            combustible += 10f;
+            combustibleslider.value=combustible;
+
+            if (combustible > combustibleinicial)
             {
-                combustibleinicial = 100f;
-
+                combustible = combustibleinicial;
+               
             }
-            Destroy(gameObject);
-
+            Debug.Log("destruida");
+            Destroy(other.gameObject);
+            
         }
 
       if (other.CompareTag("terreno")||other.CompareTag("Enemy"))
