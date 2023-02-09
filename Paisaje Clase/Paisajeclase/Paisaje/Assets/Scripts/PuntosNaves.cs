@@ -7,12 +7,15 @@ using TMPro;
 
 public class PuntosNaves : MonoBehaviour
 {
-   public TextMeshProUGUI textpuntos;
-
-   public static PuntosNaves instance;
+    public TextMeshProUGUI textpuntos;
+    public GameObject camaramuerte;
+    public static PuntosNaves instance;
     int navesdestruidas;
+    public GameObject canvasjuego;
+    public GameObject canvasvictoria;
+    public GameObject canvasGameover;
 
-
+    public GameObject jugador;
 
     // public TextMeshPro puntuacion;
     //public AudioSource collectSound;
@@ -36,15 +39,32 @@ public class PuntosNaves : MonoBehaviour
     void Start()
     {
         navesdestruidas=0;
+        canvasvictoria.SetActive(false);
+        canvasjuego.SetActive(true);
+
     }
 
     public void navedestruidas()
     {
         navesdestruidas++;
         textpuntos.text = navesdestruidas.ToString() + " / 5 Naves Destruidas";
+        if (navesdestruidas>=5)
+        {
+            canvasvictoria.SetActive(true);
+            canvasjuego.SetActive(false);
+            Destroy(jugador);
+
+        }
 
     }
-
+    public void gAMEOVER()
+    {
+        Destroy(jugador);
+        canvasvictoria.SetActive(false);
+        canvasjuego.SetActive(false);
+        canvasGameover.SetActive(true);
+        camaramuerte.SetActive(true);
+    }
     /*void Update()
     {
         // textpuntos.GetComponent<TextMeshProUGUI>().text="Naves 0/5" + puntos;

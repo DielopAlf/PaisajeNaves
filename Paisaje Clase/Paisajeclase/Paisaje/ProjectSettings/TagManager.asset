@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - player
   - bala
+  - terreno
   layers:
   - Default
   - TransparentFX

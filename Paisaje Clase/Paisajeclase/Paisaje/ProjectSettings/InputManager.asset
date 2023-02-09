@@ -169,8 +169,8 @@ InputManager:
     m_Name: Acelerar
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: left ctrl
-    positiveButton: left shift
+    negativeButton: left shift
+    positiveButton: left ctrl
     altNegativeButton: 
     altPositiveButton: 
     gravity: 3

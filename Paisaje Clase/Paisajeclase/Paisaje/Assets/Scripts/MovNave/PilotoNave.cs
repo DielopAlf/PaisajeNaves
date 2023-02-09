@@ -21,7 +21,7 @@ public class PilotoNave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += transform.forward * Time.deltaTime* speed;
+        /*transform.position += transform.forward * Time.deltaTime* speed;
 
         speed -= transform.forward.y * Time.deltaTime * -50.0f;
 
@@ -30,7 +30,7 @@ public class PilotoNave : MonoBehaviour
             speed= -5.0f;
 
         }
-        transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));
+        transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));*/
 
         if (Input.GetKeyDown(KeyCode.Space))//&& Timer<=0)
         {
@@ -42,7 +42,7 @@ public class PilotoNave : MonoBehaviour
             //Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
           
 
-
+            
 
 
             // Timer = TiempoDeEspera;
@@ -53,5 +53,14 @@ public class PilotoNave : MonoBehaviour
             PuntosNaves.instance.navedestruidas();
         }*/
         //  Timer -= Time.deltaTime;
+       
     }
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("terreno")||other.CompareTag("enemy"))
+        {
+            PuntosNaves.instance.gAMEOVER();
+
+        }
+    }//recuerda que tambien es cuando se acabe el combustible
 } 

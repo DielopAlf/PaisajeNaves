@@ -12,11 +12,9 @@ public class NaveEnemiga : MonoBehaviour
 
 
     public float speed = 5.0f;
-    public GameObject Enemy;
+    public GameObject navejugador;
     public float Vida;
-    public GameObject textpuntos;
-    public int puntos;
-    public Text Victoria;
+    public Slider barradevida;
     //public AudioSource collectSound;
 
 
@@ -33,13 +31,24 @@ public class NaveEnemiga : MonoBehaviour
         transform.position = ruta.puntosruta[0].position;
         puntoActual=0;
         CalcularSiguientePunto();
-        transform.LookAt(ruta.puntosruta[0]);  
+        transform.LookAt(ruta.puntosruta[0]);
+        barradevida.maxValue=Vida;
+        barradevida.value=Vida;
+
     }
 
     void Update()
     {
         Movimiento();
-       
+        if(navejugador!=null)
+        {
+
+            barradevida.transform.rotation=Quaternion.LookRotation(barradevida.transform.position-navejugador.transform.position);
+
+
+        }
+
+
     }
     public void Movimiento()
     {
@@ -65,19 +74,15 @@ public class NaveEnemiga : MonoBehaviour
             siguientepunto = ruta.puntosruta[puntoActual].position;
             transform.LookAt(siguientepunto);
         }
-        if (puntos >= 5) 
-        {
-            Victoria.gameObject.SetActive(true);
-
-
-        }
+     
 
     }
 
     public void aplicardano(float daño)
     {
         Vida = Vida-daño;
-        if(Vida<=0)
+        barradevida.value=Vida;
+        if (Vida<=0)
         {
             muerte();
 
@@ -89,6 +94,6 @@ public class NaveEnemiga : MonoBehaviour
         //collectSound.Play();
        //PuntosNaves.puntos+=1;
         Destroy(gameObject);
-        Debug.Log("puntos");
+        PuntosNaves.instance.navedestruidas();
     }
 }

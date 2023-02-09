@@ -10,20 +10,44 @@ public class ScriptNave : MonoBehaviour
     float velocidad;
     public float velocidadRotacion;
     Rigidbody rb;
-
+    public float combustibleinicial = 100f;
+    float combustible;
+    public float multiplicadorgasto =0.5f;
+    public Slider combustibleslider;
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
-        //velocidad=10f; //para empezar volando
+        combustible=combustibleinicial;
+        velocidad=0f;
+        combustibleslider.maxValue=combustibleinicial;
+        combustibleslider.value=combustible;
+        //para empezar volando
 
     }
-
+    
     void FixedUpdate()
     {
+        if (combustible>0)
+        {
+            rotar();
+            acelerar();
+            gastocombustible();
+            
+        }
+        else
+        {
+            if(rb.useGravity==false)
+            {
 
-        rotar();
-        acelerar();
+                rb.useGravity=true;
+
+
+            }
+
+
+        }
+        
     }
 
 
@@ -33,9 +57,9 @@ public class ScriptNave : MonoBehaviour
 
     void rotar()
     {
-        float yaw = velocidadRotacion * Input.GetAxis("Horizontal") * Time.deltaTime;
+        float yaw = velocidadRotacion * Input.GetAxis("Rotate") * Time.deltaTime;
         float pitch = velocidadRotacion * Input.GetAxis("Vertical") * Time.deltaTime;
-        float roll = velocidadRotacion * Input.GetAxis("Rotate") * Time.deltaTime;
+        float roll = velocidadRotacion * Input.GetAxis("Horizontal") * Time.deltaTime;
 
         NaveEjes.Rotate(pitch, yaw, roll);
 
@@ -61,13 +85,32 @@ public class ScriptNave : MonoBehaviour
 
         }
 
-        Debug.Log(velocidad);
+        Debug.Log("velocidad: "+velocidad);
+        
 
         NaveEjes.position += NaveEjes.forward * velocidad * Time.deltaTime;
     }
-    
-        
-                                                                                    
 
+    public void empezaramoverse()
+    {
+          velocidad=velocidadMax*-1;
+
+
+    }
+
+    public void gastocombustible()
+    {
+        float gasto = Mathf.Abs(velocidad)*multiplicadorgasto*Time.deltaTime;
+        if (combustible>0)
+        {
+
+            Debug.Log("combustible: "+combustible);
+            combustible=combustible-gasto;
+            combustibleslider.value=combustible;
+
+        }
+
+
+    }
 
 }

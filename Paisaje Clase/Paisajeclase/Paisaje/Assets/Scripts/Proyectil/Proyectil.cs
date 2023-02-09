@@ -39,7 +39,6 @@ public class Proyectil : MonoBehaviour
         if (objeto.CompareTag("Enemy"))
         {
             objeto.gameObject.GetComponent<NaveEnemiga>().aplicardano(dano);
-            PuntosNaves.instance.navedestruidas();
             Destroy(gameObject);
 
 
