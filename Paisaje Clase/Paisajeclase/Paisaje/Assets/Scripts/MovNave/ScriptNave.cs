@@ -12,7 +12,7 @@ public class ScriptNave : MonoBehaviour
     Rigidbody rb;
     public float combustibleinicial = 100f;
     float combustible;
-    public float multiplicadorgasto =0.5f;
+    public float multiplicadorgasto = 0.5f;
     public Slider combustibleslider;
     void Start()
     {
@@ -25,7 +25,7 @@ public class ScriptNave : MonoBehaviour
         //para empezar volando
 
     }
-    
+
     void FixedUpdate()
     {
         if (combustible>0)
@@ -33,11 +33,11 @@ public class ScriptNave : MonoBehaviour
             rotar();
             acelerar();
             gastocombustible();
-            
+
         }
         else
         {
-            if(rb.useGravity==false)
+            if (rb.useGravity==false)
             {
 
                 rb.useGravity=true;
@@ -47,7 +47,7 @@ public class ScriptNave : MonoBehaviour
 
 
         }
-        
+
     }
 
 
@@ -86,14 +86,14 @@ public class ScriptNave : MonoBehaviour
         }
 
         Debug.Log("velocidad: "+velocidad);
-        
+
 
         NaveEjes.position += NaveEjes.forward * velocidad * Time.deltaTime;
     }
 
     public void empezaramoverse()
     {
-          velocidad=velocidadMax*-1;
+        velocidad=velocidadMax*-1;
 
 
     }
@@ -111,6 +111,51 @@ public class ScriptNave : MonoBehaviour
         }
 
 
+
+
+
+
+
+    }
+}
+    /*private void OnTriggerEnter(Collider other)
+    {
+
+
+        if (other.CompareTag("terreno")||other.CompareTag("Enemy"))
+        {
+            PuntosNaves.instance.gAMEOVER();
+
+        }
+        if (other.CompareTag("Lata"))
+        {
+            combustibleinicial += 10f;
+            if (combustibleinicial > 100f)
+            {
+                combustibleinicial = 100f;
+
+            }
+            Destroy(gameObject);
+
+        }
+
     }
 
 }
+
+/* private void OnTriggerEnter(Collider other)
+ {
+     if(other.CompareTag("Lata")&& combustibleinicial>0f)
+     {
+         combustibleinicial += 10f;
+         if (combustibleinicial > 100f)
+         {
+             combustibleinicial = 100f;
+
+         }
+         Destroy(gameObject);
+
+     }
+ } */
+
+

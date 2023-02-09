@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 
 public class PuntosNaves : MonoBehaviour
@@ -14,6 +15,7 @@ public class PuntosNaves : MonoBehaviour
     public GameObject canvasjuego;
     public GameObject canvasvictoria;
     public GameObject canvasGameover;
+    public GameObject botonResetear;
 
     public GameObject jugador;
 
@@ -65,9 +67,15 @@ public class PuntosNaves : MonoBehaviour
         canvasGameover.SetActive(true);
         camaramuerte.SetActive(true);
     }
+    public void ResetearPuntos()
+    {
+        
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+}
     /*void Update()
     {
         // textpuntos.GetComponent<TextMeshProUGUI>().text="Naves 0/5" + puntos;
 
-    }*/
-}
+    }}*/
+

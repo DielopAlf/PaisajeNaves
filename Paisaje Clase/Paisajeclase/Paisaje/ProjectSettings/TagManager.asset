@@ -9,6 +9,7 @@ TagManager:
   - player
   - bala
   - terreno
+  - Lata
   layers:
   - Default
   - TransparentFX
