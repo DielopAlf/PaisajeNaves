@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class PilotoNave : MonoBehaviour
 
@@ -42,6 +44,11 @@ public class PilotoNave : MonoBehaviour
 
             // Timer = TiempoDeEspera;
         }
+        /*if (aplicardaño.gameObject.tag == "")
+        {
+            Debug.Log("GOL! DEL Jugador2");
+            PuntosNaves.instance.navedestruidas();
+        }*/
         //  Timer -= Time.deltaTime;
     }
 } 

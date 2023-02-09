@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
+
 
 
 public class NaveEnemiga : MonoBehaviour
@@ -14,6 +16,7 @@ public class NaveEnemiga : MonoBehaviour
     public float Vida;
     public GameObject textpuntos;
     public int puntos;
+    public Text Victoria;
     //public AudioSource collectSound;
 
 
@@ -61,11 +64,17 @@ public class NaveEnemiga : MonoBehaviour
 
             siguientepunto = ruta.puntosruta[puntoActual].position;
             transform.LookAt(siguientepunto);
-        }   
+        }
+        if (puntos >= 5) 
+        {
+            Victoria.gameObject.SetActive(true);
 
-        
+
+        }
+
     }
-    public void aplicardaño(float daño)
+
+    public void aplicardano(float daño)
     {
         Vida = Vida-daño;
         if(Vida<=0)
@@ -78,7 +87,8 @@ public class NaveEnemiga : MonoBehaviour
     public void muerte()
     {
         //collectSound.Play();
-       PuntosNaves.puntos+=1;
+       //PuntosNaves.puntos+=1;
         Destroy(gameObject);
+        Debug.Log("puntos");
     }
 }

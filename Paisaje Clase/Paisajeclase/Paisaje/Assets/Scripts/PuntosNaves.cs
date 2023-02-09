@@ -2,18 +2,52 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 public class PuntosNaves : MonoBehaviour
 {
-    public GameObject textpuntos;
-   public static int puntos;
-    //public AudioSource collectSound;
-    
+   public TextMeshProUGUI textpuntos;
 
-    void Update()
+   public static PuntosNaves instance;
+    int navesdestruidas;
+
+
+
+    // public TextMeshPro puntuacion;
+    //public AudioSource collectSound;
+
+    private void Awake()
     {
-        textpuntos.GetComponent<Text>().text="PUNTUACION" + puntos;
+        if (PuntosNaves.instance == null)
+        {
+
+            PuntosNaves.instance = this;
+
+        }
+        else
+        {
+            Destroy(this);
+
+
+        }
+    }
+
+    void Start()
+    {
+        navesdestruidas=0;
+    }
+
+    public void navedestruidas()
+    {
+        navesdestruidas++;
+        textpuntos.text = navesdestruidas.ToString() + "= / 5";
 
     }
+
+    /*void Update()
+    {
+        // textpuntos.GetComponent<TextMeshProUGUI>().text="Naves 0/5" + puntos;
+
+    }*/
 }
