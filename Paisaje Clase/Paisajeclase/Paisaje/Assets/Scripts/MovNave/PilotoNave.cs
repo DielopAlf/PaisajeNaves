@@ -12,6 +12,9 @@ public class PilotoNave : MonoBehaviour
     public float speed =-90.0f;
     public float Timer, TiempoDeEspera;
     public GameObject lugarproyectil;
+
+
+
     // Start is called before the first frame update
     
 

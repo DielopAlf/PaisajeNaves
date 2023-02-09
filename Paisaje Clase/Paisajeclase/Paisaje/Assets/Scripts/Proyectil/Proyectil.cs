@@ -9,7 +9,7 @@ public class Proyectil : MonoBehaviour
     Rigidbody rb;
     public float speed = 50f;
     public float dano=10f;
-   Vector3 puntoinicial;
+    Vector3 puntoinicial;
     public float alcance=100f;
     void Start()
     {

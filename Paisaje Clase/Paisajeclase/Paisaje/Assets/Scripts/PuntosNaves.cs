@@ -41,7 +41,7 @@ public class PuntosNaves : MonoBehaviour
     public void navedestruidas()
     {
         navesdestruidas++;
-        textpuntos.text = navesdestruidas.ToString() + "= / 5";
+        textpuntos.text = navesdestruidas.ToString() + " / 5 Naves Destruidas";
 
     }
 
