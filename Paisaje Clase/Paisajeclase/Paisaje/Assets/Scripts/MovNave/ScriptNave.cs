@@ -14,7 +14,6 @@ public class ScriptNave : MonoBehaviour
     float combustible;
     public float multiplicadorgasto = 0.5f;
     public Slider combustibleslider;
-    
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -101,7 +100,7 @@ public class ScriptNave : MonoBehaviour
 
    
      private void OnTriggerEnter(Collider other)
-     {
+    {
         if (other.CompareTag("Lata")&& combustibleinicial>0f)
         {
             combustible += 30f;
@@ -139,8 +138,6 @@ public class ScriptNave : MonoBehaviour
         }
 
     }
-   
-
 }
     /*private void OnTriggerEnter(Collider other)
     {
