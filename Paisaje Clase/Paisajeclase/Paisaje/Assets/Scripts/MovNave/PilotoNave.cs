@@ -25,7 +25,7 @@ public class PilotoNave : MonoBehaviour
 
     // Start is called before the first frame update
 
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -63,30 +63,6 @@ public class PilotoNave : MonoBehaviour
         //  Timer -= Time.deltaTime;
 
     }
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Lata")&& combustible>0f)
-        {
-            combustible += 10f;
-            combustibleslider.value=combustible;
 
-            if (combustible > combustibleinicial)
-            {
-                combustible = combustibleinicial;
-               
-            }
-            Debug.Log("destruida");
-            Destroy(other.gameObject);
-            
-        }
-
-      if (other.CompareTag("terreno")||other.CompareTag("Enemy"))
-        {
-            PuntosNaves.instance.gAMEOVER();
-
-        }
-
-
-    }
    
 }

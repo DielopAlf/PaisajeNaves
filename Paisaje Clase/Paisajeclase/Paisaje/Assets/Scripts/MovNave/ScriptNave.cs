@@ -98,23 +98,44 @@ public class ScriptNave : MonoBehaviour
 
     }
 
-    public void gastocombustible()
+   
+     private void OnTriggerEnter(Collider other)
     {
-        float gasto = Mathf.Abs(velocidad)*multiplicadorgasto*Time.deltaTime;
-        if (combustible>0)
+        if (other.CompareTag("Lata")&& combustibleinicial>0f)
         {
+            combustible += 30f;
+            
 
-            Debug.Log("combustible: "+combustible);
-            combustible=combustible-gasto;
-            combustibleslider.value=combustible;
+            if (combustible > combustibleinicial)
+            {
+                combustible = combustibleinicial;
+
+
+            }
+            Debug.Log("destruida");
+            Destroy(other.gameObject);
+            
+        }
+
+      if (other.CompareTag("terreno")||other.CompareTag("Enemy"))
+        {
+            PuntosNaves.instance.gAMEOVER();
 
         }
 
 
+    }
+    public void gastocombustible()
+    {
+        float gasto = Mathf.Abs(velocidad) * multiplicadorgasto * Time.deltaTime;
+        if (combustible > 0)
+        {
 
+            Debug.Log("combustible: " + combustible);
+            combustible = combustible - gasto;
+            combustibleslider.value = combustible;
 
-
-
+        }
 
     }
 }
