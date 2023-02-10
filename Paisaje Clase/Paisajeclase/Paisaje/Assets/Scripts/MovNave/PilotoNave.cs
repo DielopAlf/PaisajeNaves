@@ -9,8 +9,9 @@ public class PilotoNave : MonoBehaviour
 
 {
     public GameObject proyectil;
-    public float speed = -90.0f;
-    public float Timer, TiempoDeEspera;
+    public float speed = 90.0f;
+    // public float Timer, TiempoDeEspera;
+    public float Timer;
     public GameObject lugarproyectil;
 
     public Transform NaveEjes;
@@ -22,10 +23,10 @@ public class PilotoNave : MonoBehaviour
     float combustible;
     public float multiplicadorgasto = 0.5f;
     public Slider combustibleslider;
-
+   
     // Start is called before the first frame update
 
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -40,21 +41,38 @@ public class PilotoNave : MonoBehaviour
         }
         transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));*/
 
-        if (Input.GetKeyDown(KeyCode.Space))//&& Timer<=0)
+         if (Input.GetKeyDown(KeyCode.Space)&& speed > 0f)
+         {
+
+             GameObject bala = Instantiate(proyectil, lugarproyectil.transform.position, lugarproyectil.transform.rotation);
+             Debug.Log("BALAS");
+
+         }
+
+
+
+
+        //bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
+        //bala.transform.position = transform.position - transform.forward * 1.5f; 
+        //Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
+
+
+
+
+
+        // Timer = TiempoDeEspera;
+
+        
+
+       if (Input.GetKey(KeyCode.Space)&& speed > 0f)
         {
-
+          
             GameObject bala = Instantiate(proyectil, lugarproyectil.transform.position, lugarproyectil.transform.rotation);
-            Debug.Log("BALAS");
-            //bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
-            //bala.transform.position = transform.position - transform.forward * 1.5f; 
-            //Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
 
-
-
-
-
-            // Timer = TiempoDeEspera;
+            
         }
+
+
         /*if (aplicardaño.gameObject.tag == "")
         {
             Debug.Log("GOL! DEL Jugador2");
@@ -63,6 +81,7 @@ public class PilotoNave : MonoBehaviour
         //  Timer -= Time.deltaTime;
 
     }
+}
 
    
-}
+

@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 1614920575714557367}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 22.175406, y: 39.908356, z: 35.290184}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: -1.096026}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8034084441611383379}
@@ -146,8 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 779c436c3435699499b3372d7eb97510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5000
-  "da\xF1o": 10
+  speedbala: 1000
+  dano: 10
   alcance: 100
 --- !u!136 &4855466898206778152
 CapsuleCollider:
