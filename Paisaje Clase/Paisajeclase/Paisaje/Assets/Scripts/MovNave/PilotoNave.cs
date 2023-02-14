@@ -22,9 +22,17 @@ public class PilotoNave : MonoBehaviour
     float combustible;
     public float multiplicadorgasto = 0.5f;
     public Slider combustibleslider;
+    public float TiempoDisparo=0.75f;
+    float timerdisparo;
+    bool disparando;
 
-    // Start is called before the first frame update
+    public void start()
+    {
 
+        timerdisparo=0;
+        disparando=false;
+
+    }
     
     // Update is called once per frame
     void Update()
@@ -40,11 +48,11 @@ public class PilotoNave : MonoBehaviour
         }
         transform.Rotate(Input.GetAxis("Vertical"), 0.0f, -Input.GetAxis("Horizontal"));*/
 
-        if (Input.GetKeyDown(KeyCode.Space))//&& Timer<=0)
-        {
+        //if (Input.GetKeyDown(KeyCode.Space))//&& Timer<=0)
+       // {
 
-            GameObject bala = Instantiate(proyectil, lugarproyectil.transform.position, lugarproyectil.transform.rotation);
-            Debug.Log("BALAS");
+         //   GameObject bala = Instantiate(proyectil, lugarproyectil.transform.position, lugarproyectil.transform.rotation);
+          //  Debug.Log("BALAS");
             //bala.GetComponent<Rigidbody>().AddForce(transform.forward * speed, ForceMode.Impulse);
             //bala.transform.position = transform.position - transform.forward * 1.5f; 
             //Instantiate(bala, transform.position, Quaternion.Euler(0, 0, -90));
@@ -54,15 +62,71 @@ public class PilotoNave : MonoBehaviour
 
 
             // Timer = TiempoDeEspera;
-        }
+       // }
+
+
+
+
         /*if (aplicardaño.gameObject.tag == "")
         {
             Debug.Log("GOL! DEL Jugador2");
             PuntosNaves.instance.navedestruidas();
         }*/
         //  Timer -= Time.deltaTime;
+        disparo();
+    }
+    public void disparo()
+    {
+
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            disparando=true;
+           
+        }
+        else if(Input.GetKeyUp(KeyCode.Space))
+        {
+
+            timerdisparo=0f;
+            disparando=false;
+
+        }
+        
+        if (disparando==true)
+        {
+
+               if (timerdisparo>0f)
+               {
+                timerdisparo-=Time.deltaTime;
+  
+               }
+               else
+               {
+                
+                timerdisparo=TiempoDisparo;
+                GameObject bala = Instantiate(proyectil, lugarproyectil.transform.position, lugarproyectil.transform.rotation);
+                Debug.Log("disparo");
+ 
+
+               }
+
+
+        }
 
     }
+    public  IEnumerator aumentocadencia(float divisor,float duracion)
+    {
+        float antiguotiempo = TiempoDisparo;
+        TiempoDisparo=antiguotiempo/divisor;
+        Debug.Log(TiempoDisparo);
+        yield return new WaitForSeconds(duracion);
+        TiempoDisparo = antiguotiempo; 
+        Debug.Log(TiempoDisparo);
 
-   
+    }
+   public void boostedcogido(float divisor,float duracion)
+   {
+     StartCoroutine(aumentocadencia(divisor,duracion));
+
+   }
 }

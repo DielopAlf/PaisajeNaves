@@ -85,7 +85,7 @@ public class ScriptNave : MonoBehaviour
 
         }
 
-        Debug.Log("velocidad: "+velocidad);
+       // Debug.Log("velocidad: "+velocidad);
 
 
         NaveEjes.position += NaveEjes.forward * velocidad * Time.deltaTime;
@@ -112,7 +112,7 @@ public class ScriptNave : MonoBehaviour
 
 
             }
-            Debug.Log("destruida");
+           // Debug.Log("destruida");
             Destroy(other.gameObject);
             
         }
@@ -131,7 +131,7 @@ public class ScriptNave : MonoBehaviour
         if (combustible > 0)
         {
 
-            Debug.Log("combustible: " + combustible);
+            //Debug.Log("combustible: " + combustible);
             combustible = combustible - gasto;
             combustibleslider.value = combustible;
 
